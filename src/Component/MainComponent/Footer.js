@@ -61,7 +61,7 @@ const Footer = () => {
             </div>
             <div className="footer-col copy-right-sec">
               {/* <i className="fa-solid fa-copyright" />   */}
-              Designed By <a href="#">Kricode Softwares</a>
+              Designed By <a href="#">Kricode Software</a>
             </div>
           </div>
         </section>
