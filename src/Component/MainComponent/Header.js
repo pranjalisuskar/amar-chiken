@@ -13,7 +13,7 @@ const Header = () => {
                 alt="Logo"
                 className="logo"
               />
-              <span className="ms-2">My Website</span>
+              <span className="ms-2">My Website</span>  
             </a>
             {/* Search Bar and City Input */}
             <div className="mx-auto d-flex">

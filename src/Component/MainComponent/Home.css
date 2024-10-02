@@ -1,0 +1,52 @@
+.circular-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover;  /* Ensures the image fits inside the circle */
+    border: 3px solid #9A292F; /* Optional: Adds a white border around the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow effect */
+    margin: 0 auto; /* Centers the image */
+  }
+  
+  .slide-item {
+    padding: 10px;
+  }
+  
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .slick-dots {
+    bottom: -30px; /* Adjust the position of the dots */
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    color: #9A292F; /* Customize the color of the navigation arrows */
+  }
+  
+
+
+  /* SHOP CARDS CSS */
+  .shop-card {
+    background-color: #9A292F; /* Card background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.2s; /* Animation for hover effect */
+  }
+  
+  .shop-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 10px; /* Round top left corner */
+    border-top-right-radius: 10px; /* Round top right corner */
+  }
+  
+  .rating i {
+    margin: 0 2px; /* Space between stars */
+  }
+  
