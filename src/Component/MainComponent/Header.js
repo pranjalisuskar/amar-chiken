@@ -51,7 +51,7 @@ const handleShowregister = () => {
                 className="logo"
                 style={{ alignItems: 'center' }}
               />
-              <span className="ms-2">My Website</span>
+              <span className="ms-2">Amir Chicken</span>
             </a>
 
             {/* Search Bar */}
@@ -69,7 +69,7 @@ const handleShowregister = () => {
             <div className="d-flex align-items-center">
               {/* City Button */}
               <button className="btn btn-outline-danger me-2" onClick={handleShowCity}>
-                <i className="fa-solid fa-city" /> City
+                <i className="fa-solid fa-city" /> Location
               </button>
 
               {/* City Modal */}

@@ -12,7 +12,7 @@ const Footer = () => {
             <p>
             <i className="fa-solid fa-location" /> Timbar Market, Rajaram,<br />
               Sambhaji Nagar Rd, opposite Fire Station,<br />
-              Kolhapur, Maharashtra 416002
+              Pune, Maharashtra 411016
             </p>
           </div>
           
