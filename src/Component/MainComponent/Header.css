@@ -68,3 +68,29 @@ form {
       width: 100%;
     }
   }
+
+
+  
+
+  @media (max-width: 768px) { /* For tablets */
+    .container {
+      max-width: 90%;
+      margin: auto;
+    }
+    input.form-control {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 576px) { /* For mobile phones */
+    .container {
+      max-width: 100%;
+      margin: auto;
+    }
+    input.form-control {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+    }
+  }

@@ -105,9 +105,9 @@ const handleShowregister = () => {
               </Modal>
 
               {/* Products Button */}
-              <button className="btn btn-outline-danger me-2">
+              <a href="/product"> <button className="btn btn-outline-danger me-2">
                 <i className="fa-solid fa-box" /> Products
-              </button>
+              </button></a>
 
               {/* My Account Button */}
               <button className="btn btn-outline-danger" onClick={handleShowAccount}>
@@ -156,14 +156,34 @@ const handleShowregister = () => {
   </div> */}
   <div className="container">
     {/* <label htmlFor="uname"><b>Username</b></label> */}
-    <input type="text" placeholder="Phone number, Email address" name="uname" required />
+    <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Phone Number, Email Address"
+                aria-label="Search"
+                style={{ width: "400px", borderRadius: "10px", textAlign: "center" }}
+              />
     {/* <label htmlFor="psw"><b>Password</b></label> */}
-    <input type="password" placeholder=" Password" name="psw" required />
-    <div className="container" style={{backgroundColor: '#f1f1f1'}}>
-    <button type="button" className="cancelbtn">Cancel</button>
+    <br/>
+    <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Password"
+                aria-label="Search"
+                style={{ width: "400px", borderRadius: "10px", textAlign: "center" }}
+              />
+              {/* <br/> */}
+    <div className="container" >
+    {/* <button type="button" className="cancelbtn">Cancel</button> */}
     <span className="psw">Forgot <a href="#">password?</a></span>
+    <br/>
   </div>
-    <button type="submit">Login</button>
+  <button
+                      className="form-control"
+                      style={{ background: "#db0e0e", color: "white", borderRadius: "10px", width: "100%", maxWidth: "400px" }} onClick={handleShowregister}
+                    >
+                     Login
+                    </button>
     <label>
       <input type="checkbox" defaultChecked="checked" name="remember" /> Remember me
     </label>
@@ -185,28 +205,75 @@ const handleShowregister = () => {
                   <Modal.Title>Please Sign Up</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-   <form action="action_page.php" method="post">
-  {/* <div className="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" className="avatar" />
-  </div> */}
+                <form action="action_page.php" method="post">
   <div className="container">
-    {/* <label htmlFor="uname"><b>Username</b></label> */}
-    <input type="text" placeholder="Name" name="uname" required />
-    {/* <label htmlFor="psw"><b>Password</b></label> */}
-    <input type="password" placeholder=" pin code" name="psw" required />
+    <div className="form-group">
+      <input
+        className="form-control"
+        type="search"
+        placeholder="Name"
+        style={{ borderRadius: "10px", textAlign: "center" }}
+      />
+      <br/>
+    </div>
+    <div className="form-group">
+      <input
+        className="form-control"
+        type="search"
+        placeholder="Pin code"
+        aria-label="Search"
+        style={{ borderRadius: "10px", textAlign: "center" }}
+      />
+      <br/>
+    </div>
+    <div className="form-group">
+      <input
+        className="form-control"
+        type="search"
+        placeholder="Location"
+        aria-label="Search"
+        style={{ borderRadius: "10px", textAlign: "center" }}
+      />
+      <br/>
+    </div>
+    <div className="form-group">
+      <input
+        className="form-control"
+        type="search"
+        placeholder="Gmail"
+        aria-label="Search"
+        style={{ borderRadius: "10px", textAlign: "center" }}
+      />
+      <br/>
+    </div>
+    <div className="form-group">
+      <input
+        className="form-control"
+        type="search"
+        placeholder="Phone Number"
+        aria-label="Search"
+        style={{ borderRadius: "10px", textAlign: "center" }}
+      />
+      <br/>
+    </div>
 
-    <input type="password" placeholder="Location" name="psw" required />
+    <div className="container text-center" style={{ backgroundColor: '#f1f1f1' }}>
+      <span className="psw">Forgot <a href="#">Forgot?</a></span>
+      <br/>
+    </div>
 
-    <input type="password" placeholder=" Gmail" name="psw" required />
-    <input type="password" placeholder=" Phone number" name="psw" required />
-    <div className="container" style={{backgroundColor: '#f1f1f1'}}>
-    <button type="button" className="cancelbtn">Cancel</button>
-    <span className="psw">Forgot <a href="#">Forgot?</a></span>
-  </div>
-    <button type="submit">Next</button>
-    <label>
-      <input type="checkbox" defaultChecked="checked" name="remember" /> Remember me
-    </label>
+    <button
+      className="btn btn-danger form-control"
+      style={{ borderRadius: "10px", width: "100%" }}
+      onClick={handleShowregister}
+    >
+      Next
+    </button>
+    
+    <div className="form-check">
+      <input type="checkbox" className="form-check-input" name="remember" defaultChecked="checked" />
+      <label className="form-check-label">Remember me</label>
+    </div>
   </div>
  
 </form>
