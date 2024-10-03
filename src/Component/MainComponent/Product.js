@@ -24,7 +24,7 @@ const Product = () => {
           img: "https://newzealandfresh.sg/cdn/shop/products/Screen_Shot_2018-08-14_at_12.16.53_AM_grande.png?v=1563071603",
           name: "Boneless chicken",
           price:"144/500gm",
-          rating: 4,
+          rating: 4
         },
         {
           img: "https://www.shutterstock.com/image-photo/fresh-raw-chicken-basil-isolated-260nw-1064429528.jpg",
