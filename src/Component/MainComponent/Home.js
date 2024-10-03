@@ -17,81 +17,81 @@ const Home = () => {
 
   const slidesData = [
     {
-      img: "https://via.placeholder.com/150",
-      title: "Product 1",
-      description: "Description for Product 1",
+      img: "https://cdn.britannica.com/94/151894-050-F72A5317/Brown-eggs.jpg",
+      title: "Egg",
+    //   description: "Description for Product 1",
     },
     {
-      img: "https://via.placeholder.com/150",
-      title: "Product 2",
-      description: "Description for Product 2",
+      img: "https://cdn4.volusion.store/etwvu-tkhop/v/vspfiles/photos/420-2.jpg",
+      title: "Chinken Wing",
+    //   description: "Description for Product 2",
     },
     {
-      img: "https://via.placeholder.com/150",
-      title: "Product 3",
-      description: "Description for Product 3",
+      img: "https://i0.wp.com/www.thegoodeatsdiner.com/wp-content/uploads/2020/08/28_chicken_wings_jumbo.jpg?fit=1000%2C736&ssl=1",
+      title: "Boneless Chinken",
+    //   description: "Description for Product 3",
     },
     {
-      img: "https://via.placeholder.com/150",
-      title: "Product 4",
-      description: "Description for Product 4",
+      img: "https://fryit.co/wp-content/uploads/2023/04/thawed-chicken-wings_01-mcw.jpg",
+      title: "Chinken Curry",
+    //   description: "Description for Product 4",
     },
     {
-      img: "https://via.placeholder.com/150",
-      title: "Product 5",
-      description: "Description for Product 5",
+      img: "https://www.inspiredtaste.net/wp-content/uploads/2023/08/Simple-Whole-Roasted-Recipe-Video.jpg",
+      title: "Chinken",
+    //   description: "Description for Product 5",
     },
     {
-      img: "https://via.placeholder.com/150",
-      title: "Product 6",
-      description: "Description for Product 6",
+      img: "https://akm-img-a-in.tosshub.com/indiatoday/fish-story-647_120617055032.jpg?VersionId=8lgq8R3m73XTGRESTwi9DtI8HKHhsF6K",
+      title: "Fish",
+    //   description: "Description for Product 6",
     },
     {
-      img: "https://via.placeholder.com/150",
-      title: "Product 7",
-      description: "Description for Product 7",
+      img: "https://media.licdn.com/dms/image/C5612AQHR3R8uD3j21Q/article-cover_image-shrink_600_2000/0/1597008473365?e=2147483647&v=beta&t=AEBARVD2jgRvtbEz_6c1YTxGWLkuR193E3U-BPlsXCo",
+      title: "Mutton",
+    //   description: "Description for Product 7",
     },
   ];
 
 
   const shopsData = [
     {
-      img: "https://via.placeholder.com/150",
-      name: "Shop 1",
-      rating: 4,
-    },
+        img: "https://img.freepik.com/premium-vector/colorful-fried-chicken-shop-cartoon-vector-design_1080480-126900.jpg?semt=ais_hybrid", // Use the direct image URL
+        name: "Shop 1",
+        rating: 4,
+      },
     {
-      img: "https://via.placeholder.com/150",
+      img: "https://img.freepik.com/premium-vector/colorful-fried-chicken-shop-cartoon-vector-design_1080480-126900.jpg?semt=ais_hybrid",
       name: "Shop 2",
       rating: 5,
     },
     {
-      img: "https://via.placeholder.com/150",
+      img: "https://img.freepik.com/premium-vector/colorful-fried-chicken-shop-cartoon-vector-design_1080480-126900.jpg?semt=ais_hybrid",
       name: "Shop 3",
       rating: 3,
     },
     {
-      img: "https://via.placeholder.com/150",
+      img: "https://img.freepik.com/premium-vector/colorful-fried-chicken-shop-cartoon-vector-design_1080480-126900.jpg?semt=ais_hybrid",
       name: "Shop 4",
       rating: 4,
     },
     {
-      img: "https://via.placeholder.com/150",
+      img: "https://img.freepik.com/premium-vector/colorful-fried-chicken-shop-cartoon-vector-design_1080480-126900.jpg?semt=ais_hybrid",
       name: "Shop 5",
       rating: 5,
     },
     {
-      img: "https://via.placeholder.com/150",
+      img: "https://img.freepik.com/premium-vector/colorful-fried-chicken-shop-cartoon-vector-design_1080480-126900.jpg?semt=ais_hybrid",
       name: "Shop 6",
       rating: 4,
     },
     {
-      img: "https://via.placeholder.com/150",
+      img: "https://img.freepik.com/premium-vector/colorful-fried-chicken-shop-cartoon-vector-design_1080480-126900.jpg?semt=ais_hybrid",
       name: "Shop 7",
       rating: 3,
     },
     {
-      img: "https://via.placeholder.com/150",
+      img: "https://img.freepik.com/premium-vector/colorful-fried-chicken-shop-cartoon-vector-design_1080480-126900.jpg?semt=ais_hybrid",
       name: "Shop 8",
       rating: 5,
     },
@@ -122,7 +122,7 @@ const Home = () => {
 
       <div className="container mt-5">
         <h2 className="text-center" style={{ color: "#9A292F" }}>
-          Shop Cards
+          Shops To Explore
         </h2>
         <div className="row">
           {shopsData.map((shop, index) => (
