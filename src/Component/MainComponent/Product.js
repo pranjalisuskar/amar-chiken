@@ -21,7 +21,7 @@ const Product = () => {
           rating: 3,
         },
         {
-          img: "https://www.shutterstock.com/image-photo/grilled-chicken-wings-ketchup-sauces-260nw-2261512069.jpg",
+          img: "https://newzealandfresh.sg/cdn/shop/products/Screen_Shot_2018-08-14_at_12.16.53_AM_grande.png?v=1563071603",
           name: "Boneless chicken",
           price:"144/500gm",
           rating: 4,
@@ -39,7 +39,7 @@ const Product = () => {
           rating: 4,
         },
         {
-          img: "https://www.shutterstock.com/image-photo/grilled-chicken-wings-ketchup-sauces-260nw-2261512069.jpg",
+          img: "https://www.shutterstock.com/image-photo/fresh-turkey-poultry-meat-isolated-260nw-2253215017.jpg",
           name: "Boneless Chicken",
           price:"144/500gm",
           rating: 3,
