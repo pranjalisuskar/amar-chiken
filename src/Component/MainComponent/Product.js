@@ -1,51 +1,51 @@
 import React from 'react'
-// import './Product.css'
+import './Product.css'
 const Product = () => {
     const shopsData = [
         {
-          img: "https://images-prod.healthline.com/hlcmsresource/images/AN_images/health-benefits-of-eggs-1296x728-feature.jpg",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpQADIrYbC5agt9OFuvI5I5hieNxIJAEcQHQ&s",
           name: "Egg",
           price:"144/500gm",
           rating: 4,
         },
         {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaJt99xDUf1rWLt7yfRmke6yt2eKRoVrZsWw07S8intbLjNq5LcZx5uhiXFMld5O3HJ3Q&usqp=CAU/150",
+          img: "https://www.shutterstock.com/image-photo/fresh-raw-chicken-basil-isolated-260nw-1064429528.jpg",
           name: "Chicken",
           price:"144/500gm",
           rating: 5,
         },
         {
-          img: "https://meatmachine.co.uk/cdn/shop/products/ChickenWings.jpg?v=1585681489/150",
+          img: "https://t4.ftcdn.net/jpg/02/92/77/85/360_F_292778539_JeGMFXajaQtXpq5nRZLo87suJZkqJ7oS.jpg",
           name: "Chicken Wing",
           price:"144/500gm",
           rating: 3,
         },
         {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUZnAVxas9Oy_4OHbaxPVqNmXdGsCgtnppZA&s/150",
+          img: "https://www.shutterstock.com/image-photo/grilled-chicken-wings-ketchup-sauces-260nw-2261512069.jpg",
           name: "Boneless chicken",
           price:"144/500gm",
           rating: 4,
         },
         {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkh0dQvzPjbN0ktAA5tsuZ7ExRkn3X8Ya8Vg&s/150",
+          img: "https://www.shutterstock.com/image-photo/fresh-raw-chicken-basil-isolated-260nw-1064429528.jpg",
           name: "Full Chicken Curry",
           price:"144/500gm",
           rating: 5,
         },
         {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9T4ZYxpTBO4kZUgu5XdlFPpPetC_Bd3f9ucH_ucIyhNRd5JE87wRXmscOFL39EJ06qpg&usqp=CAU/150",
+          img: "https://t4.ftcdn.net/jpg/02/92/77/85/360_F_292778539_JeGMFXajaQtXpq5nRZLo87suJZkqJ7oS.jpg",
           name: "Chicken Wing",
           price:"144/500gm",
           rating: 4,
         },
         {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX8xcZADYgt7cMntqxo6HUilfYIX6TD4iPfi0YjawEYJs3WhZo0XBnm1UlGqYNBcF2NIo&usqp=CAU/150",
+          img: "https://www.shutterstock.com/image-photo/grilled-chicken-wings-ketchup-sauces-260nw-2261512069.jpg",
           name: "Boneless Chicken",
           price:"144/500gm",
           rating: 3,
         },
         {
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2heSrp8WJ8GpAVpCXLuKusmQ7QdjIwHfM7Q&s/150",
+          img: "https://www.shutterstock.com/image-photo/fresh-raw-chicken-basil-isolated-260nw-1064429528.jpg",
           name: "Full chicken curry",
           price:"144/500gm",
           rating: 5,
@@ -54,9 +54,9 @@ const Product = () => {
   return (
     <div>
     <div className="container mt-5">
-      <h2 className="text-center" style={{ color: "#9A292F" }}>
-        Shop Cards
-      </h2>
+    <h2 className="text-center" style={{ color: "#9A292F" }}>
+          Order Fresh Chicken & Egg Online In Your City{" "}
+        </h2><br/>
       <div className="row justify-content-center">
         {shopsData.map((shop, index) => (
           <div className="col-md-3 mb-4" key={index}>

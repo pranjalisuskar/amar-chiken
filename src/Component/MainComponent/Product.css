@@ -1,16 +1,21 @@
+/* SHOP CARDS CSS */
 .shop-card {
-    width: 300px; /* Fixed width for the card */
-    height: 350px; /* Fixed height for the card */
+    background-color: #9A292F; /* Card background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.2s; /* Animation for hover effect */
   }
-
-  .shop-card img {
-    height: 300px; /* Set the height for the image */
-    object-fit: cover; /* Ensure the image scales nicely */
+  
+  .shop-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
   }
-
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+  
+  .card-img-top {
+    border-top-left-radius: 10px; /* Round top left corner */
+    border-top-right-radius: 10px; /* Round top right corner */
+  }
+  
+  .rating i {
+    margin: 0 2px; /* Space between stars */
   }
