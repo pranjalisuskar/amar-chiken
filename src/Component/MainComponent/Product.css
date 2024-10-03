@@ -1,0 +1,16 @@
+.shop-card {
+    width: 300px; /* Fixed width for the card */
+    height: 350px; /* Fixed height for the card */
+  }
+
+  .shop-card img {
+    height: 300px; /* Set the height for the image */
+    object-fit: cover; /* Ensure the image scales nicely */
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
