@@ -69,3 +69,18 @@
   }
   
 }
+
+/* Apply blue background to the footer container */
+.footer {
+  background-color: #ccc; /* Blue background */
+  padding: 3rem 1rem;
+  border-radius: 10px;
+}
+
+.footer-hr {
+  width: 40%;  /* Set desired width */
+ /* Set color */
+  margin: 0.5rem 0;  /* Adjust spacing if needed */
+  /* borderColor: "#9A292F" */
+  border-color:"#9A292F"
+}

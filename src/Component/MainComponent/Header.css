@@ -94,3 +94,10 @@ form {
       width: 100%;
     }
   }
+
+  /* In your CSS file */
+.custom-width {
+  width: 140px; /* Adjust as needed */
+  text-align: center;
+  margin-left: 5px;
+}
