@@ -94,10 +94,10 @@ const Header = () => {
     </div>
   </Modal.Header>
 
-  <Modal.Title className="text-center mt-3">Web App Name</Modal.Title>
+  <Modal.Title className="text-center mt-3">Amir chicken</Modal.Title>
 
   <Modal.Body>
-    <p className="text-center">Choose delivery location</p>
+    <p className="text-center">Choose Your location</p>
     <div className="d-flex justify-content-center">
       <input
         className="form-control"
@@ -120,7 +120,7 @@ const Header = () => {
         style={{ backgroundColor: "#9A292F", width: "100%", maxWidth: "400px" }}
         onClick={() => alert("Search performed!")}
       >
-        Search
+        Submit
       </Button>
     </div>
   </Modal.Footer>
