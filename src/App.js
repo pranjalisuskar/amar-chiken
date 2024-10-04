@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path='/'element={<Master Rcf={Home} />}/>
         <Route path='/product' element={<Master Rcf={Product}/>}/>
-        <Route path='./dashboard' element={<Master Rcf={Dashboard}/>}/>
+        <Route path='/dashboard' element={<Master Rcf={Dashboard}/>}/>
       </Routes>
       </BrowserRouter>
     </div>
