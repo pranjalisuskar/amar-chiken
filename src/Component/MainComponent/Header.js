@@ -77,50 +77,54 @@ const Header = () => {
 
               {/* City Modal */}
               <Modal show={showCityModal} onHide={handleCloseCity}>
-                <Modal.Header closeButton>
-                  <img
-                    src=""
-                    alt=""
-                    className="circular-image"
-                    style={{
-                      display: "block",
-                      margin: "0 auto",
-                      background: "red",
-                      marginLeft: "40%",
-                    }}
-                  />
-                  <br />
-                </Modal.Header>
-                <Modal.Title className="text-center">Web app name</Modal.Title>
-                <Modal.Body>
-                  <p className="text-center">Choose delivery location</p>
-                  <div className="d-flex justify-content-center">
-                    <input
-                      className="form-control"
-                      type="search"
-                      placeholder="Search your city or pincode..."
-                      aria-label="Search"
-                      style={{
-                        width: "100%",
-                        maxWidth: "400px",
-                        borderRadius: "10px",
-                        textAlign: "center",
-                      }}
-                    />
-                  </div>
-                </Modal.Body>
-                <Modal.Footer>
-                  {/* <Button variant="secondary" onClick={handleCloseCity}>Close</Button> */}
-                  <Button
-                    style={{backgroundColor:"#9A292F"}}
-                    onClick={() => alert("Search performed!")}
-                  >
-                    Search
-                  </Button>
-                  <br></br>
-                  <br></br>
-                </Modal.Footer>
-              </Modal>
+  <Modal.Header closeButton>
+    <div className="text-center w-100">
+      <img
+        src=""
+        alt=""
+        className="circular-image"
+        style={{
+          width: "90px", // Adjust size for mobile screens
+          height: "90px",
+          background: "#9A292F",
+          borderRadius: "50%", // Ensures image stays circular
+          objectFit: "cover", // Scales image while keeping aspect ratio
+        }}
+      />
+    </div>
+  </Modal.Header>
+
+  <Modal.Title className="text-center mt-3">Web App Name</Modal.Title>
+
+  <Modal.Body>
+    <p className="text-center">Choose delivery location</p>
+    <div className="d-flex justify-content-center">
+      <input
+        className="form-control"
+        type="search"
+        placeholder="Search your city or pincode..."
+        aria-label="Search"
+        style={{
+          width: "100%",
+          maxWidth: "400px",
+          borderRadius: "10px",
+          textAlign: "center",
+        }}
+      />
+    </div>
+  </Modal.Body>
+
+  <Modal.Footer>
+    <div className="d-flex justify-content-center w-100">
+      <Button
+        style={{ backgroundColor: "#9A292F", width: "100%", maxWidth: "400px" }}
+        onClick={() => alert("Search performed!")}
+      >
+        Search
+      </Button>
+    </div>
+  </Modal.Footer>
+</Modal>
 
               {/* Products Button */}
               <div className="d-flex align-items-center">
@@ -150,7 +154,7 @@ const Header = () => {
                     <button
                       className="form-control"
                       style={{
-                        background: "#db0e0e",
+                        background: "#9A292F",
                         color: "white",
                         borderRadius: "10px",
                         width: "100%",
@@ -166,7 +170,7 @@ const Header = () => {
                     <button
                       className="form-control"
                       style={{
-                        background: "#db0e0e",
+                        background: "#9A292F",
                         color: "white",
                         borderRadius: "10px",
                         width: "100%",
@@ -189,68 +193,58 @@ const Header = () => {
                   <Modal.Title>Log in/Sign Up</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <form action="action_page.php" method="post">
-                    {/* <div className="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" className="avatar" />
-  </div> */}
-                    <div className="container">
-                      {/* <label htmlFor="uname"><b>Username</b></label> */}
-                      <input
-                        className="form-control me-2"
-                        type="search"
-                        placeholder="Phone Number, Email Address"
-                        aria-label="Search"
-                        style={{
-                          width: "400px",
-                          borderRadius: "10px",
-                          textAlign: "center",
-                        }}
-                      />
-                      {/* <label htmlFor="psw"><b>Password</b></label> */}
-                      <br />
-                      <input
-                        className="form-control me-2"
-                        type="search"
-                        placeholder="Password"
-                        aria-label="Search"
-                        style={{
-                          width: "400px",
-                          borderRadius: "10px",
-                          textAlign: "center",
-                        }}
-                      />
-                      {/* <br/> */}
-                      <div className="container">
-                        {/* <button type="button" className="cancelbtn">Cancel</button> */}
-                        
-                        <span className="psw">
-                          Forgot <a href="#">password?</a>
-                        </span>
-                        <br />
-                      </div>
-                      <button
-                        className="form-control"
-                        style={{
-                          background: "#db0e0e",
-                          color: "white",
-                          borderRadius: "10px",
-                          width: "100%",
-                          maxWidth: "400px",
-                        }}
-                        onClick={handleShowregister}
-                      >
-                        Login
-                      </button>
-                      <label>
-                        <input
-                          type="checkbox"
-                          defaultChecked="checked"
-                          name="remember"
-                        />{" "}
-                        Remember me
-                      </label>
-                    </div>
-                  </form>
+                <form action="" method="post">
+  <div className="container">
+    <input
+      className="form-control me-2"
+      type="search"
+      placeholder="Phone Number, Email Address"
+      aria-label="Search"
+      style={{
+        width: "100%",
+        borderRadius: "10px",
+        textAlign: "center",
+      }}
+    />
+    <br />
+    <input
+        className="form-control me-2"
+        type="search"
+        placeholder="Password"
+        aria-label="Search"
+        style={{
+          width: "100%",
+          borderRadius: "10px",
+          textAlign: "center",
+        }}
+    />
+    <div className="container mt-2">
+      <span className="psw">
+        Forgot <a href="#">password?</a>
+      </span>
+      <br />
+      <label>
+        <input type="checkbox" defaultChecked="checked" name="remember" />{" "}
+        Remember me
+      </label>
+      <br />
+    </div>
+    <button
+      className="form-control mt-3"
+      style={{
+        background: "#db0e0e",
+        color: "white",
+        borderRadius: "10px",
+        width: "100%",
+      }}
+    >
+      Login
+    </button>
+  </div>
+
+  
+</form>
+
                 </Modal.Body>
                 <Modal.Footer>
                   {/* <Button variant="secondary" onClick={handleCloseLogin}>Close</Button> */}
@@ -263,7 +257,7 @@ const Header = () => {
                   <Modal.Title>Please Sign Up</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <form action="action_page.php" method="post">
+                  <form action="" method="post">
                     <div className="container">
                       <div className="form-group">
                         <input
@@ -316,32 +310,33 @@ const Header = () => {
                       </div>
 
                       <div
-                        className="container text-center"
-                        style={{ backgroundColor: "#f1f1f1" }}
+                        className="container"
+                        // style={{ backgroundColor: "#f1f1f1" }}
                       >
                         <span className="psw">
                           Forgot <a href="#">Forgot?</a>
                         </span>
                         <br />
-                      </div>
-
-                      <button
-                        className="btn btn-danger form-control"
-                        style={{ borderRadius: "10px", width: "100%" }}
-                        onClick={handleShowregister}
-                      >
-                        Next
-                      </button>
-
-                      <div className="form-check">
+                        {/* <div className="form-check"> */}
                         <input
                           type="checkbox"
                           className="form-check-input"
                           name="remember"
                           defaultChecked="checked"
-                        />
-                        <label className="form-check-label">Remember me</label>
+                        />&nbsp;
+                        <label className="form-check-label">Remember me</label><br/>
                       </div>
+                      {/* </div> */}
+
+                      <button
+                        className="btn btn-danger form-control"
+                        style={{ borderRadius: "10px", width: "100%" }}
+                        // onClick={handleShowregister}
+                      >
+                        Next
+                      </button>
+
+                      
                     </div>
                   </form>
                 </Modal.Body>
