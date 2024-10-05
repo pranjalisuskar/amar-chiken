@@ -7,5 +7,6 @@ router.get("/getuser/:id",userController.getUserbyID);
 router.put("/updateUser/:id",userController.updateUser);
 router.delete("/deleteUser/:id",userController.deleteUser);
 router.post("/send-otp",userController.sendOTP);
+router.post("/verify-otp",userController.verifyOTP);
 
 module.exports=router;

@@ -3,7 +3,9 @@ const { handleError } = require('../errorHandler');
 const bcrypt = require('bcrypt');
 const { config } = require('nodemon');
 const crypto = require('crypto');
-const  transporter  = require('../mailTransporter');
+const transporter = require('../mailTransporter');
+const { error } = require('console');
+const nodemailer = require('nodemailer');
 
 const registerUser = async (req, res) => {
     const {
@@ -108,40 +110,83 @@ const deleteUser = async (req, res) => {
     }
 };
 
-//Generate and send otp
 const sendOTP = async (req, res) => {
     const { user_Email } = req.body;
-
     try {
         const user = await User.findOne({ where: { user_Email } });
         if (!user) {
             return res
-                .status(404)
-                .send({ message: "User not found", status: "FAILED" });
+                .status(401)
+                .send({ message: "User does not exit", status: "FAILED" });
         }
-        res.send(user);
-        //Genrate OTP and set expiration time
+
+        // Generate OTP and set expiration time
         const otp = crypto.randomInt(100000, 999999).toString();
-        const otpExpiration = new Date(Date.now() + 15 * 60 * 1000);//15 min from now
+        const otpExpiration = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes from now
 
         user.user_OTP = otp;
         user.OTP_Expiration = otpExpiration;
         await user.save();
 
-        //Send OTP via email
-        const mailOptions = {
-            from: config.MAILUSER,
-            to: user.email,
-            subject: "Password reset OTP",
-            text: `Your OTP for passward reset is :${otp}`,
-        };
-        await transporter.sendMail(mailOptions);
-        res.send({ message: "OTP sent to yuor email for reset password", status: "Success" });
+        const transporter = nodemailer.createTransport({
+            host: "smtp.ethereal.email",
+            port: 587,
+            secure: false, // true for port 465, false for other ports
+            auth: {
+                user: "maddison53@ethereal.email",
+                pass: "jn7jnAPss4f63QBp6D",
+            },
+        });
 
+        const message = {
+            from: '"Amar Chiken " <amarchiken@ethereal.email>', // sender address
+            to: "bar@example.com, baz@example.com", // list of receivers
+            subject: "OTP to reset the password", // Subject line
+            text: `OTP to reset the password is  ${otp}`, // plain text body
+        };
+
+        transporter.sendMail(message).then((info) => {
+            return res.status(201).json({
+                message: "You should recieve a mail to reset the password",
+                info: info.messageId,
+                preview: nodemailer.getTestMessageUrl(info),
+            })
+        })
     } catch (error) {
         handleError(error, res);
     }
 }
+
+// Verify OTP
+const verifyOTP = async (req, res) => {
+    const { user_Email, user_OTP } = req.body;
+    try {
+        const user = await User.findOne({ where: { user_Email } });
+        console.log(user);
+        if (!user) {
+            return res.
+                status(400).
+                send({ message: "User not found", status: "FAILED" });
+        }
+
+        if (user.user_OTP !== user_OTP) {
+            return res.
+                status(400).
+                send({ message: "OTP expired", status: "FAILED" });
+        }
+
+        if (user.OTP_Expiration < new Date()) {
+            return res
+                .status(400)
+                .send({ message: "OTP has expired", status: "FAILED" });
+        }
+
+        res.send({ message: "OTP verified successfully", status: "SUCCESS" });
+    } catch (error) {
+        res.json({ message: "Error verifiying the OTP" });
+        handleError(error, res);
+    }
+};
 
 module.exports = {
     registerUser,
@@ -149,5 +194,6 @@ module.exports = {
     getUserbyID,
     updateUser,
     deleteUser,
-    sendOTP
+    sendOTP,
+    verifyOTP
 };
