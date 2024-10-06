@@ -81,6 +81,28 @@ const Header = () => {
 
 
 
+
+  // const { http, token, setToken } = Authuser();
+  const [user_Email, setUserEmail] = useState('');
+
+  const [user_Password, setUserPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await http.post('http://localhost:5000/userAPI/login', {
+        user_email: user_Email,
+        user_password: user_Password
+      });
+      setToken(response.data.token);  // Assuming your API returns a token
+      console.log("Login successful:", response.data);
+      handleCloseLogin();  // Close the modal after a successful login
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
+
+
   return (
     <div>
       <header>
@@ -110,11 +132,22 @@ const Header = () => {
                   textAlign: "center",
                 }}
               />
+             
             </div>
-
+            
             {/* Product and My Account Buttons */}
+            <div>
+            <button
+                className="btn btn-outline-danger me-2"
+                // onClick={handleShowCity}
+              >
+                <i className="fa-solid fa-card" /> AddCard
+              </button>
+            </div>&nbsp;
             <div className="d-flex align-items-center">
               {/* City Button */}
+             
+
               <button
                 className="btn btn-outline-danger me-2"
                 onClick={handleShowCity}
@@ -242,85 +275,81 @@ const Header = () => {
 
               {/* Login Modal */}
               <Modal show={showLoginModal} onHide={handleCloseLogin}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Log in/Sign Up</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <form action="" method="post">
-  <div className="container">
-    <input
-      className="form-control me-2"
-      type="search"
-      placeholder="Phone Number, Email Address"
-      aria-label="Search"
-      style={{
-        // width: "100%",
-        // borderRadius: "10px",
-        textAlign: "center",
-        // background: "#9A292F",
-        color: "white",
-        width: "100%",
-       height:"9vh", 
-       maxWidth: "400px",
-       borderRadius:"20px",
-       boxShadow:"black",
-       padding:"6px"
-      }}
-    />
-    <br />
-    <input
-        className="form-control me-2"
-        type="search"
-        placeholder="Password"
-        aria-label="Search"
-        style={{
-          // width: "100%",
-          // borderRadius: "10px",
-          textAlign: "center",
-          color: "white",
-          width: "100%",
-         height:"9vh", 
-         maxWidth: "400px",
-         borderRadius:"20px",
-         boxShadow:"black",
-         padding:"6px"
-        }}
-    />
-    <div className="container mt-2">
-      <span className="psw">
-        Forgot <a href="#">password?</a>
-      </span>
-      <br />
-      <label>
-        <input type="checkbox" defaultChecked="checked" name="remember" />{" "}
-        Remember me
-      </label>
-      <br />
-    </div>
-    <button
-      className="form-control mt-3"
-      style={{
-        background: "#9A292F",
-        color: "white",
-        width: "80%",
-       height:"9vh", 
-       maxWidth: "400px",
-       borderRadius:"20px",
-       marginLeft:"50px"
-      }}
-    >
-      Login
-    </button>
-  </div>
+      <Modal.Header closeButton>
+        <Modal.Title>Log in/Sign Up</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <form onSubmit={handleLogin}>
+          <div className="container">
+          <input
+  className="form-control me-2"
+  type="text"
+  placeholder="Phone Number, Email Address"
+// Ensure this is correctly connected to the state
+  name="user_Email"
+  onChange={(e) => setUserEmail(e.target.value)} // Updates state as the user types
+  style={{
+    textAlign: "center",
+    color: "white",
+    width: "100%",
+    height: "9vh",
+    maxWidth: "400px",
+    borderRadius: "20px",
+    boxShadow: "black",
+    padding: "6px"
+  }}
+/>
 
-  
-</form>
-
-                </Modal.Body>
-                <Modal.Footer>
-                  {/* <Button variant="secondary" onClick={handleCloseLogin}>Close</Button> */}
-                </Modal.Footer>
-              </Modal>
+            <br />
+            <input
+              className="form-control me-2"
+              type="password"
+              placeholder="Password"
+              name="user_password"
+              // value={userPassword}
+              onChange={(e) => setUserPassword(e.target.value)}
+              // aria-label="Password"
+              style={{
+                textAlign: "center",
+                color: "white",
+                width: "100%",
+                height: "9vh",
+                maxWidth: "400px",
+                borderRadius: "20px",
+                boxShadow: "black",
+                padding: "6px"
+              }}
+          
+            />
+            <div className="container mt-2">
+              <span className="psw">
+                Forgot <a href="#">password?</a>
+              </span>
+              <br />
+              <label>
+                <input type="checkbox" name="remember" /> Remember me
+              </label>
+              <br />
+            </div>
+            <button
+              type="submit"
+              className="form-control mt-3"
+              style={{
+                background: "#9A292F",
+                color: "white",
+                width: "80%",
+                height: "9vh",
+                maxWidth: "400px",
+                borderRadius: "20px",
+                marginLeft: "50px"
+              }}
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </Modal.Body>
+    </Modal>
 
               {/* Register Modal */}
               <Modal show={showregisterModal} onHide={handleCloseregister}>
