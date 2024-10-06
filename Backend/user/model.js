@@ -1,7 +1,10 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../db/index');
+// const sequelize = require('../config/database'); // Adjust the path to your DB config
 
-const User = sequelize.define('user', {
+// const sequelize = require("../db/config")
+
+const User = sequelize.define('User', {
     user_ID: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -101,8 +104,19 @@ const User = sequelize.define('user', {
             },
         },
     },
+
+    isDeleted: {
+        type: DataTypes.BOOLEAN,  // Correct data type
+        allowNull: false,
+        defaultValue: false,  // Default value for new records
+    }
 }, {
     timestamps: true,
+    defaultScope:{
+        where: {
+            isDeleted: false, // Ensure this is correct and corresponds to the column in the DB
+        },
+    }
 });
 
 module.exports = User;

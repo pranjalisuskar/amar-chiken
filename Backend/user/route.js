@@ -9,4 +9,7 @@ router.delete("/deleteUser/:id",userController.deleteUser);
 router.post("/send-otp",userController.sendOTP);
 router.post("/verify-otp",userController.verifyOTP);
 
+// LOGIN API ROUTE //
+router.post('/login',userController.userLogin);
+
 module.exports=router;
