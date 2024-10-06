@@ -34,6 +34,52 @@ const Header = () => {
     setShowregisterModal(true); // Open Login modal
   };
 
+
+
+  // Register
+
+
+  const [FromData, setfromdata] = useState({
+    user_name: '',
+    user_pincode: '',
+    location: '',
+    user_Email: '',
+    user_phoneno: '',
+    
+  });
+
+  // Handle form data submission
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log(FromData);
+
+    try {
+      const response = await fetch('http://localhost:5000/userAPI/register', {
+        method: 'POST',
+        body: JSON.stringify(FromData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Registration Successful:', result);
+      } else {
+        console.error('Registration Error:', result);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
+  };
+
+  // Handle input changes (no conditional logic here)
+  const oninputChange = (e) => {
+    setfromdata({ ...FromData, [e.target.name]: e.target.value });
+  };
+
+
+
   return (
     <div>
       <header>
@@ -78,8 +124,8 @@ const Header = () => {
               {/* City Modal */}
               <Modal show={showCityModal} onHide={handleCloseCity}>
   <Modal.Header closeButton>
-    <div className="text-center w-100">
-      <img
+    {/* <div className="text-center w-100"> */}
+      {/* <img
         src=""
         alt=""
         className="circular-image"
@@ -90,8 +136,8 @@ const Header = () => {
           borderRadius: "50%", // Ensures image stays circular
           objectFit: "cover", // Scales image while keeping aspect ratio
         }}
-      />
-    </div>
+      /> */}
+    {/* </div> */}
   </Modal.Header>
 
   <Modal.Title className="text-center mt-3">Amir chicken</Modal.Title>
@@ -105,10 +151,14 @@ const Header = () => {
         placeholder="Search your city or pincode..."
         aria-label="Search"
         style={{
-          width: "100%",
-          maxWidth: "400px",
-          borderRadius: "10px",
+          // width: "100%",
+          // maxWidth: "400px",
+          // borderRadius: "10px",
           textAlign: "center",
+          width: "80%",
+          height:"8vh", 
+          maxWidth: "400px",
+          borderRadius:"20px"
         }}
       />
     </div>
@@ -117,7 +167,7 @@ const Header = () => {
   <Modal.Footer>
     <div className="d-flex justify-content-center w-100">
       <Button
-        style={{ backgroundColor: "#9A292F", width: "100%", maxWidth: "400px" }}
+        style={{ backgroundColor: "#9A292F", width: "80%",height:"8vh", maxWidth: "400px",borderRadius:"20px" }}
         onClick={() => alert("Search performed!")}
       >
         Submit
@@ -156,9 +206,10 @@ const Header = () => {
                       style={{
                         background: "#9A292F",
                         color: "white",
-                        borderRadius: "10px",
-                        width: "100%",
-                        maxWidth: "400px",
+                       width: "80%",
+                       height:"9vh", 
+                       maxWidth: "400px",
+                       borderRadius:"20px"
                       }}
                       onClick={handleShowLogin}
                     >
@@ -172,9 +223,10 @@ const Header = () => {
                       style={{
                         background: "#9A292F",
                         color: "white",
-                        borderRadius: "10px",
-                        width: "100%",
-                        maxWidth: "400px",
+                        width: "80%",
+                       height:"9vh", 
+                       maxWidth: "400px",
+                       borderRadius:"20px"
                       }}
                       onClick={handleShowregister}
                     >
@@ -201,9 +253,17 @@ const Header = () => {
       placeholder="Phone Number, Email Address"
       aria-label="Search"
       style={{
-        width: "100%",
-        borderRadius: "10px",
+        // width: "100%",
+        // borderRadius: "10px",
         textAlign: "center",
+        // background: "#9A292F",
+        color: "white",
+        width: "100%",
+       height:"9vh", 
+       maxWidth: "400px",
+       borderRadius:"20px",
+       boxShadow:"black",
+       padding:"6px"
       }}
     />
     <br />
@@ -213,9 +273,16 @@ const Header = () => {
         placeholder="Password"
         aria-label="Search"
         style={{
-          width: "100%",
-          borderRadius: "10px",
+          // width: "100%",
+          // borderRadius: "10px",
           textAlign: "center",
+          color: "white",
+          width: "100%",
+         height:"9vh", 
+         maxWidth: "400px",
+         borderRadius:"20px",
+         boxShadow:"black",
+         padding:"6px"
         }}
     />
     <div className="container mt-2">
@@ -232,10 +299,13 @@ const Header = () => {
     <button
       className="form-control mt-3"
       style={{
-        background: "#db0e0e",
+        background: "#9A292F",
         color: "white",
-        borderRadius: "10px",
-        width: "100%",
+        width: "80%",
+       height:"9vh", 
+       maxWidth: "400px",
+       borderRadius:"20px",
+       marginLeft:"50px"
       }}
     >
       Login
@@ -251,94 +321,108 @@ const Header = () => {
                 </Modal.Footer>
               </Modal>
 
-              {/* Login Modal */}
+              {/* Register Modal */}
               <Modal show={showregisterModal} onHide={handleCloseregister}>
                 <Modal.Header closeButton>
                   <Modal.Title>Please Sign Up</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <form action="" method="post">
-                    <div className="container">
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="search"
-                          placeholder="Name"
-                          style={{ borderRadius: "10px", textAlign: "center" }}
-                        />
-                        <br />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="search"
-                          placeholder="Pin code"
-                          aria-label="Search"
-                          style={{ borderRadius: "10px", textAlign: "center" }}
-                        />
-                        <br />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="search"
-                          placeholder="Location"
-                          aria-label="Search"
-                          style={{ borderRadius: "10px", textAlign: "center" }}
-                        />
-                        <br />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="search"
-                          placeholder="Gmail"
-                          aria-label="Search"
-                          style={{ borderRadius: "10px", textAlign: "center" }}
-                        />
-                        <br />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          className="form-control"
-                          type="search"
-                          placeholder="Phone Number"
-                          aria-label="Search"
-                          style={{ borderRadius: "10px", textAlign: "center" }}
-                        />
-                        <br />
-                      </div>
+                <form onSubmit={onSubmit} method="post">
+      <div className="container">
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="text"
+            name="user_name"
+            placeholder="Name"
+            onChange={oninputChange}
+            // value={FromData.name}
+            
+          />
+          <br />
+        </div>
 
-                      <div
-                        className="container"
-                        // style={{ backgroundColor: "#f1f1f1" }}
-                      >
-                        <span className="psw">
-                          Forgot <a href="#">Forgot?</a>
-                        </span>
-                        <br />
-                        {/* <div className="form-check"> */}
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          name="remember"
-                          defaultChecked="checked"
-                        />&nbsp;
-                        <label className="form-check-label">Remember me</label><br/>
-                      </div>
-                      {/* </div> */}
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="text"
+            name="user_pincode"
+            placeholder="Pin code"
+            onChange={oninputChange}
+            
+            
+          />
+          <br />
+        </div>
 
-                      <button
-                        className="btn btn-danger form-control"
-                        style={{ borderRadius: "10px", width: "100%" }}
-                        // onClick={handleShowregister}
-                      >
-                        Next
-                      </button>
+        {/* Additional input fields like gender, mobile_no, etc. go here */}
 
-                      
-                    </div>
-                  </form>
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="text"
+            name="location"
+            placeholder="Location"
+            onChange={oninputChange}
+           
+           
+          />
+          <br />
+        </div>
+
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="text"
+            name="user_Email"
+            placeholder="user_Email"
+            onChange={oninputChange}
+            
+            
+          />
+          <br />
+        </div>
+
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="text"
+            name="user_phoneno"
+            placeholder="Phone_number"
+            onChange={oninputChange}
+           
+           
+          />
+          <br />
+        </div>
+        <div className="container mt-2">
+      <span className="psw">
+        Forgot <a href="#">Forgot?</a>
+      </span>
+      <br />
+      <label>
+        <input type="checkbox" defaultChecked="checked" name="remember" />{" "}
+        Remember me
+      </label>
+      <br />
+    </div>
+        <button
+          type="submit"
+          className="btn btn-danger form-control"
+          style={{
+            background: "#9A292F",
+            color: "white",
+            width: "80%",
+            height: "9vh",
+            maxWidth: "400px",
+            borderRadius: "20px",
+            marginLeft: "50px",
+          }}
+        >
+          Register
+        </button>
+      </div>
+    </form>
                 </Modal.Body>
                 <Modal.Footer>
                   {/* <Button variant="secondary" onClick={handleCloseLogin}>Close</Button> */}
