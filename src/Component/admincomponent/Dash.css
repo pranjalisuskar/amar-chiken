@@ -1,0 +1,36 @@
+/* Add your custom CSS styles here */
+.VideoCTAsstyled__Wrapper-sc-1ytjzs6-0 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between buttons */
+}
+
+.VideoCTAsstyled__Wrapper-sc-1ytjzs6-0 button {
+    background-color: #007bff; /* Change button background color */
+    color: #fff; /* Change button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.VideoCTAsstyled__Wrapper-sc-1ytjzs6-0 button:hover {
+    background-color: #0056b3; /* Change button background color on hover */
+}
+
+/* Adjust button size and font */
+.VideoCTAsstyled__Wrapper-sc-1ytjzs6-0 button span {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .VideoCTAsstyled__Wrapper-sc-1ytjzs6-0 {
+        flex-direction: column;
+        align-items: center;
+    }
+}

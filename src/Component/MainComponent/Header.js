@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Header.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Authuser from "./Authuser";
 
 const Header = () => {
   const [showCityModal, setShowCityModal] = useState(false);
@@ -37,7 +38,7 @@ const Header = () => {
 
 
   // Register
-
+  const { http, token, setToken } = Authuser();
 
   const [FromData, setfromdata] = useState({
     user_name: '',
@@ -64,7 +65,7 @@ const Header = () => {
 
       const result = await response.json();
       if (response.ok) {
-        console.log('Registration Successful:', result);
+        Alert('Registration Successful:', result);
       } else {
         console.error('Registration Error:', result);
       }
