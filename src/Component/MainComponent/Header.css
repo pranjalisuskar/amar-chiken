@@ -4,14 +4,29 @@ form {
   
   /* Full-width inputs */
   input[type=text], input[type=password] {
-    width: 100%;
+    width: 100%; /* This will override the 400px */
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-  }
-  
+    /* If you want a fixed width, comment out the line above */
+    /* width: 400px; */
+    border-radius: 20px;
+    text-align: center;
+}
+
+.sty {
+  background: #9A292F; /* No quotes around the color */
+  color:  #f9f3f3; /* No quotes */
+  width: 80%; /* No quotes */
+  height: 9vh; /* No quotes */
+  max-width: 400px; /* Use hyphen instead of camel case */
+  border-radius: 20px; /* Use hyphen instead of camel case */
+  margin-left: 50px; /* Use hyphen instead of camel case */
+  text-decoration: #ccc;
+}
+
 
 
 
