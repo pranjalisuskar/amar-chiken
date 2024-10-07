@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const settings = {
@@ -121,9 +122,9 @@ const Home = () => {
       </div>
 
       <div className="container mt-5">
-      <a href="/dashboard" > <h2 className="text-center" style={{ color: "#9A292F" }}> 
+      <Link to="/dash" > <h2 className="text-center" style={{ color: "#9A292F" }}> 
           Shops To Explore
-        </h2></a>
+        </h2></Link>
         <div className="row">
           {shopsData.map((shop, index) => (
             <div className="col-md-3 mb-4" key={index}>

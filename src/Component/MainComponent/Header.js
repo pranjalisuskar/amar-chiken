@@ -117,7 +117,7 @@ toast('Your notification message');
           if (res.data.token) {
             setToken(res.data.user_data, res.data.token);
             
-            Navigate("/");
+            Navigate("/dash");
           } else {
             notify (res.data.message);
             console.log("login",Login);
