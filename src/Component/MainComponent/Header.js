@@ -6,6 +6,12 @@ import "./Header.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Authuser from "./Authuser";
+import { Navigate } from "react-router";
+// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
+
 
 const Header = () => {
   const [showCityModal, setShowCityModal] = useState(false);
@@ -40,66 +46,89 @@ const Header = () => {
   // Register
   const { http, token, setToken } = Authuser();
 
-  const [FromData, setfromdata] = useState({
-    user_name: '',
-    user_pincode: '',
-    location: '',
+  const [formData, setformData] = useState(
+    {
+        user_Name: '',
     user_Email: '',
+    user_Password: '',
     user_phoneno: '',
+    user_pincode: ''
     
-  });
-
-  // Handle form data submission
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    console.log(FromData);
-
-    try {
-      const response = await fetch('http://localhost:5000/userAPI/register', {
-        method: 'POST',
-        body: JSON.stringify(FromData),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        Alert('Registration Successful:', result);
-      } else {
-        console.error('Registration Error:', result);
-      }
-    } catch (error) {
-      console.error('Network error:', error);
     }
-  };
+);
+// const notify = () => toast("Notification message!");
+console.log(formData)
+const onInputchanges = (e) => {
+    setformData({ ...formData, [e.target.name]: e.target.value });
 
-  // Handle input changes (no conditional logic here)
-  const oninputChange = (e) => {
-    setfromdata({ ...FromData, [e.target.name]: e.target.value });
-  };
+};
+
+const onSubmit = (e) => {
+  e.preventDefault();
+  
+  fetch('http://localhost:5000/userAPI/register', {
+    method: 'POST',
+    body: JSON.stringify(formData),  // Convert formData to JSON string
+    headers: {
+      'Content-Type': 'application/json',  // Specify content type as JSON
+      // You can add Authorization headers here if needed
+    },
+  })
+  .then((response) => {
+    // Check if the request was successful
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();  // Parse the JSON response
+  })
+  .then((data) => {
+    console.log("User registered successfully!", data);
+    alert("User has registered successfully!");
+  })
+  .catch((error) => {
+    console.error("Error in registration:", error);  // Log the error for debugging
+  });
+};
 
 
 
 
   // const { http, token, setToken } = Authuser();
-  const [user_Email, setUserEmail] = useState('');
 
-  const [user_Password, setUserPassword] = useState('');
+  const [Login, SetLogin] = useState({user_Email: '',user_password: '' });
+  const [btnDiseble, setDisebale] = useState(0);
 
-  const handleLogin = async (e) => {
+  const notify = () => toast("Notification message!");
+
+
+// Then use it
+toast('Your notification message');
+
+  const OninputChange = (e) => {
+    SetLogin({ ...Login, [e.target.name]: e.target.value });
+  }
+  const onSubmits=(e) => {
     e.preventDefault();
-    try {
-      const response = await http.post('http://localhost:5000/userAPI/login', {
-        user_email: user_Email,
-        user_password: user_Password
-      });
-      setToken(response.data.token);  // Assuming your API returns a token
-      console.log("Login successful:", response.data);
-      handleCloseLogin();  // Close the modal after a successful login
-    } catch (error) {
-      console.error("Login failed:", error);
-    }
+   
+  
+      http.post("http://localhost:5000/userAPI/login", Login)
+        .then((res) => {
+          console.log(res.data.user_data);
+          if (res.data.token) {
+            setToken(res.data.user_data, res.data.token);
+            
+            Navigate("/");
+          } else {
+            notify (res.data.message);
+            console.log("login",Login);
+            
+          }
+          setDisebale(0);
+        })
+        .catch((error) => {
+          // notify("The provided credentials are invalid");
+          setDisebale(0);
+        });
   };
 
 
@@ -109,7 +138,7 @@ const Header = () => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
             {/* Logo and Name */}
-            <a className="navbar-brand d-flex align-items-center" href="#">
+            <Link className="navbar-brand d-flex align-items-center" to="#">
               <img
                 src="https://t3.ftcdn.net/jpg/06/55/69/72/360_F_655697217_GclwFgFfhS8Tw1V3dRbplhWKouXgQ9SL.jpg"
                 alt="Logo"
@@ -117,7 +146,7 @@ const Header = () => {
                 style={{ alignItems: "center" }}
               />
               <span className="ms-2">Amir Chicken</span>
-            </a>
+            </Link>
 
             {/* Search Bar */}
             <div className="mx-auto d-flex">
@@ -236,15 +265,8 @@ const Header = () => {
                 <Modal.Body>
                   <div className="d-flex justify-content-center">
                     <button
-                      className="form-control"
-                      style={{
-                        background: "#9A292F",
-                        color: "white",
-                       width: "80%",
-                       height:"9vh", 
-                       maxWidth: "400px",
-                       borderRadius:"20px"
-                      }}
+                      className="form-control sty"
+                     
                       onClick={handleShowLogin}
                     >
                       Log in Existing Account
@@ -253,15 +275,8 @@ const Header = () => {
                   <br />
                   <div className="d-flex justify-content-center">
                     <button
-                      className="form-control"
-                      style={{
-                        background: "#9A292F",
-                        color: "white",
-                        width: "80%",
-                       height:"9vh", 
-                       maxWidth: "400px",
-                       borderRadius:"20px"
-                      }}
+                      className="form-control sty"
+                      
                       onClick={handleShowregister}
                     >
                       Create New Account
@@ -279,7 +294,7 @@ const Header = () => {
         <Modal.Title>Log in/Sign Up</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={handleLogin}>
+        <div >
           <div className="container">
           <input
   className="form-control me-2"
@@ -287,38 +302,21 @@ const Header = () => {
   placeholder="Phone Number, Email Address"
 // Ensure this is correctly connected to the state
   name="user_Email"
-  onChange={(e) => setUserEmail(e.target.value)} // Updates state as the user types
-  style={{
-    textAlign: "center",
-    color: "white",
-    width: "100%",
-    height: "9vh",
-    maxWidth: "400px",
-    borderRadius: "20px",
-    boxShadow: "black",
-    padding: "6px"
-  }}
+  onChange={(e) => OninputChange(e)}// Updates state as the user types
+  
 />
 
             <br />
+            <br/>
             <input
               className="form-control me-2"
               type="password"
               placeholder="Password"
               name="user_password"
               // value={userPassword}
-              onChange={(e) => setUserPassword(e.target.value)}
+              onChange={(e) => OninputChange(e)}
               // aria-label="Password"
-              style={{
-                textAlign: "center",
-                color: "white",
-                width: "100%",
-                height: "9vh",
-                maxWidth: "400px",
-                borderRadius: "20px",
-                boxShadow: "black",
-                padding: "6px"
-              }}
+             
           
             />
             <div className="container mt-2">
@@ -331,23 +329,15 @@ const Header = () => {
               </label>
               <br />
             </div>
-            <button
+            <Button
               type="submit"
-              className="form-control mt-3"
-              style={{
-                background: "#9A292F",
-                color: "white",
-                width: "80%",
-                height: "9vh",
-                maxWidth: "400px",
-                borderRadius: "20px",
-                marginLeft: "50px"
-              }}
+              className="form-control mt-3 sty"
+              onClick={(e) => onSubmits(e)}
             >
               Login
-            </button>
+            </Button>
           </div>
-        </form>
+        </div>
       </Modal.Body>
     </Modal>
 
@@ -357,7 +347,7 @@ const Header = () => {
                   <Modal.Title>Please Sign Up</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <form onSubmit={onSubmit} method="post">
+                <div>
       <div className="container">
         <div className="form-group">
           <input
@@ -365,7 +355,7 @@ const Header = () => {
             type="text"
             name="user_name"
             placeholder="Name"
-            onChange={oninputChange}
+            onChange={(e) => onInputchanges(e)}
             // value={FromData.name}
             
           />
@@ -378,7 +368,7 @@ const Header = () => {
             type="text"
             name="user_pincode"
             placeholder="Pin code"
-            onChange={oninputChange}
+            onChange={(e) => onInputchanges(e)}
             
             
           />
@@ -393,7 +383,7 @@ const Header = () => {
             type="text"
             name="location"
             placeholder="Location"
-            onChange={oninputChange}
+            onChange={(e) => onInputchanges(e)}
            
            
           />
@@ -406,7 +396,7 @@ const Header = () => {
             type="text"
             name="user_Email"
             placeholder="user_Email"
-            onChange={oninputChange}
+            onChange={(e) => onInputchanges(e)}
             
             
           />
@@ -419,7 +409,7 @@ const Header = () => {
             type="text"
             name="user_phoneno"
             placeholder="Phone_number"
-            onChange={oninputChange}
+            onChange={(e) => onInputchanges(e)}
            
            
           />
@@ -427,7 +417,7 @@ const Header = () => {
         </div>
         <div className="container mt-2">
       <span className="psw">
-        Forgot <a href="#">Forgot?</a>
+        Forgot <Link to="#">Forgot?</Link>
       </span>
       <br />
       <label>
@@ -436,23 +426,15 @@ const Header = () => {
       </label>
       <br />
     </div>
-        <button
+        <Button
           type="submit"
-          className="btn btn-danger form-control"
-          style={{
-            background: "#9A292F",
-            color: "white",
-            width: "80%",
-            height: "9vh",
-            maxWidth: "400px",
-            borderRadius: "20px",
-            marginLeft: "50px",
-          }}
+          className="btn btn-danger form-control sty"
+          onClick={(e) => onSubmit(e)}
         >
           Register
-        </button>
+        </Button>
       </div>
-    </form>
+    </div>
                 </Modal.Body>
                 <Modal.Footer>
                   {/* <Button variant="secondary" onClick={handleCloseLogin}>Close</Button> */}

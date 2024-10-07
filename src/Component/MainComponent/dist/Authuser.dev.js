@@ -57,7 +57,7 @@ var Authuser = function Authuser() {
       setUser = _useState4[1];
 
   var http = _axios["default"].create({
-    baseURL: "http://localhost:5000/userAPI",
+    baseURL: "http://localhost:5000/userAPI/login",
     headers: {
       "Content-Type": "multipart/form-data",
       Authorization: "Bearer ".concat(token)
